@@ -9,17 +9,17 @@ public class Methods {
         int n = 0;
         System.out.println(header);
         System.out.println(n + "\t" + x0);
-        while (abs(x0 - x1) > eps) {
+        while (true) {
             n++;
-            x1 = x0;
-            x0 = it(x0);
-            System.out.println(n + "\t" + x0);
-
+            x1 = it(x0);
+            if (abs(x1 - x0) < eps) break;
+            System.out.println(n + "\t" + x1);
+            x0 = x1;
         }
     }
 
     private static double it(double x0) {
-        return x0 - 0.0555555555555556 * (pow(x0, 3) - 6 * pow(x0, 2) + 5 * x0 + 12);
+        return x0 - 0.0434782609* (pow(x0, 3) - 6 * pow(x0, 2) + 5 * x0 + 12);
     }
 
     public static void runNewton(double eps) {
@@ -32,8 +32,8 @@ public class Methods {
             n++;
             double f = fx(x0) / dfx(x0);
             x1 = x0 - f;
-            System.out.println(n + "\t" + x1);
             if (abs(x1 - x0) < eps) break;
+            System.out.println(n + "\t" + x1);
             x0 = x1;
         }
     }
@@ -57,9 +57,9 @@ public class Methods {
         while (true) {
             n++;
             x1 = pow((-pow(x0,2) + 4*x0 + 4), 1.0/3);
-            System.out.println(n + "\t" + x1);
             if (abs(x1 - x0) < eps) break;
-            x0= x1;
+            System.out.println(n + "\t" + x1);
+            x0 = x1;
         }
     }
 }

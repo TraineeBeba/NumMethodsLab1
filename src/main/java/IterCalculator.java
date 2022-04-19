@@ -3,7 +3,7 @@ import static java.lang.Math.log;
 public class IterCalculator {
     public static int RelaxCount(double eps) {
         double z0 = 1;
-        double q = 0.7222222222222222;
+        double q = 0.782608696;
         return (int)(log(z0/eps)/log(1/q)) + 1;
     }
 
